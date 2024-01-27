@@ -1,0 +1,14 @@
+.searchContainer {
+  display: flex;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px;
+  width: 25em;
+}
+
+.searchIcon {
+  width: 1em;
+  height: 1em;
+}
