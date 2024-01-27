@@ -16,6 +16,7 @@ function Navbar() {
           color: "var(--color-primary)",
           border: "solid 1px black",
           borderRadius: "5px",
+          cursor: "pointer",
         }}
       />
     </nav>
