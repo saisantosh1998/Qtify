@@ -9,7 +9,7 @@ import Button from '../Button/Button';
 const Section = ({ title, url }) => {
   const [albums, setAlbums] = useState([]);
   const [backupAlbums, setBackupAlbums] = useState([]);
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     const fetchTopAlbums = async () => {
