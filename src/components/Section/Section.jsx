@@ -15,7 +15,7 @@ const Section = ({ title, url }) => {
     const fetchTopAlbums = async () => {
       try {
         const response = await axios.get(url);
-        setAlbums(response.data.slice(0, 6));
+        setAlbums(response.data);
         setBackupAlbums(response.data);
       } catch (error) {
         console.error('Error fetching top albums:', error);
