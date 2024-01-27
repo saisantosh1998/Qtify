@@ -1,0 +1,28 @@
+.heroSection {
+  width: 100%;
+  background-color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+}
+
+.headphonesImage {
+  max-width: 100%;
+  max-height: 100px;
+  margin-right: 20px;
+}
+
+.textContainer {
+  text-align: left;
+}
+
+.mainText {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.subText {
+  font-size: 16px;
+}
