@@ -18,3 +18,18 @@
   gap: 16px;
   justify-content: center;
 }
+
+.MuiTabs-root {
+  border-bottom: 2px solid var(--color-primary);
+}
+.MuiTabs-indicator {
+  background-color: transparent;
+}
+
+.MuiTab-root {
+  font-weight: bold;
+}
+
+.MuiTab-textColorPrimary.Mui-selected {
+  color: green;
+}
