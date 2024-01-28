@@ -1,14 +1,12 @@
-// Section.jsx
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Section.module.css';
 import Card from '../Card/Card';
+import Carousel from '../Carousel/Carousel';
 import Button from '../Button/Button';
 
 const Section = ({ title, url }) => {
   const [albums, setAlbums] = useState([]);
-  const [backupAlbums, setBackupAlbums] = useState([]);
   const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
@@ -16,27 +14,21 @@ const Section = ({ title, url }) => {
       try {
         const response = await axios.get(url);
         setAlbums(response.data);
-        setBackupAlbums(response.data);
       } catch (error) {
-        console.error('Error fetching top albums:', error);
+        console.error('Error fetching albums:', error);
       }
     };
 
     fetchTopAlbums();
-  }, []);
-
-  const handleClick = () => {
-    setToggle(!toggle);
-    setAlbums(toggle ? backupAlbums.slice(0, 6) : backupAlbums);
-  };
+  }, [url]);
 
   return (
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
         <h3 className={styles.sectionTitle}>{title}</h3>
         <Button
-          text={toggle ? 'Collapse' : 'Show All'}
-          click={handleClick}
+          text={toggle ? 'Show All' : 'Collapse'}
+          click={() => setToggle(!toggle)}
           styles={{
             backgroundColor: 'var(--color-black)',
             border: 'solid black 0px',
@@ -46,11 +38,15 @@ const Section = ({ title, url }) => {
           }}
         />
       </div>
-      <div className={styles.cardGrid}>
-        {albums.map((album) => (
-          <Card key={album.id} album={album} />
-        ))}
-      </div>
+      {toggle ? (
+        <Carousel data={albums} renderedItem={Card}/>
+      ) : (
+        <div className={styles.cardGrid}>
+          {albums.map((album) => (
+            <Card key={album.id} album={album} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
